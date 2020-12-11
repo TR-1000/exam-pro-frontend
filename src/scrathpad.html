@@ -1,0 +1,23 @@
+<form onSubmit={this.handleSubmit}>
+
+  <label for="email">
+    <input
+      type="text"
+      id="email"
+      placeholder="email address"
+      value={this.state.email}
+      onChange={this.handleChange}
+      required>
+  </label>
+
+  <label for="password">
+    <input
+      type="text"
+      id="password"
+      placeholder="password"
+      required>
+  </label>
+
+  <input type="submit" value="Log In">
+
+</form>
