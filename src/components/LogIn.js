@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button, Card, Form } from 'react-bootstrap';
 import axios from 'axios';
 
 export default class LogIn extends Component {
@@ -29,12 +28,12 @@ export default class LogIn extends Component {
 
     axios.post(
       `http://localhost:8080/examPro/examApi/login?email=${email}&password=${password}`,
-      { email: email, password: password }
+      { withCredentials: true }
     )
     .then((response) => {
       console.log(response);
-    }).
-    catch((error) => {
+    })
+    .catch((error) => {
       console.log("login error", error);
     });
 
@@ -42,11 +41,13 @@ export default class LogIn extends Component {
 
   render() {
     return (
+      <div class="mb-3">
 
-      <form onSubmit={this.handleSubmit}>
 
-        <label for="email">
+        <label for="email" className="form-label">
+          Email address
           <input
+            className="form-control me-2"
             type="email"
             name="email"
             placeholder="email address"
@@ -56,8 +57,12 @@ export default class LogIn extends Component {
           />
         </label>
 
-        <label for="password">
+
+
+        <label for="password" className="form-label">
+          Password
           <input
+            className="form-control me-2"
             type="password"
             name="password"
             placeholder="password"
@@ -67,9 +72,14 @@ export default class LogIn extends Component {
           />
         </label>
 
-        <input type="submit" value="Log In"/>
+        <input type="submit" value="Log In" type="button" className="btn btn-primary" />
 
-      </form>
+      
+
+
+      </div>
+
+
 
     )
   }

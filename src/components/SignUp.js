@@ -1,13 +1,15 @@
 import React from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
+
+
 const SignUp = () => {
   return (
     <form class="" action="index.html" method="post">
       <label for="email">
-        <input type="text" id="email" placeholder="email address">
+        <input type="text" id="email" placeholder="email address"/>
       </label>
       <label for="password">
-        <input type="text" id="password" placeholder="password">
+        <input type="text" id="password" placeholder="password"/>
       </label>
     </form>
     // <>
