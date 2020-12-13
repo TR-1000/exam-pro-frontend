@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-import Question from './Question.js';
-
-
 class Quiz extends Component {
   constructor(props) {
     super(props);
@@ -75,7 +72,6 @@ class Quiz extends Component {
         score: score + 1
       })
     }
-
     this.setState({
       currentIndex: this.state.currentIndex + 1,
       selectedAnswer: null
@@ -92,9 +88,14 @@ class Quiz extends Component {
   }
 
   handleFinish() {
+    const {selectedAnswer, right_ans, score} = this.state
     console.log(this.state.currentIndex, this.state.questions.length);
+    if(selectedAnswer === right_ans) {
+      this.setState ({
+        score: score + 1
+      })
+    }
     if (this.state.currentIndex+1 == this.state.questions.length) {
-
       this.setState({
         quizEnd:true
       })
@@ -118,7 +119,7 @@ class Quiz extends Component {
       console.log("quiz end");
       return (
         <div>
-          {`Your score is ${this.state.score }`}
+          {`Your score is ${(this.state.score / this.state.questions.length) * 100}% `}
         </div>
       )
     }
