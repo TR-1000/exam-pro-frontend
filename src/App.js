@@ -9,29 +9,23 @@ import {
 
 // import Header from './components/Header.js';
 import Home from './components/Home.jsx';
-
-
+import Quiz from './components/Quiz.jsx';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loggedIn: null
+      loggedIn: null,
+
     }
   }
 
   render () {
+    console.log(this.data)
     return (
-      <Router>
-        <div className="App container text-center" >
-          <Switch>
-            <Route path="/">
-              <Home loggedIn={this.state.loggedIn} />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
+
+    <Quiz loggedIn={this.state.loggedIn} />
     );
   }
 }

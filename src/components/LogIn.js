@@ -41,13 +41,10 @@ export default class LogIn extends Component {
 
   render() {
     return (
-      <div class="mb-3">
+      <form onSubmit={this.handleSubmit}>
 
-
-        <label for="email" className="form-label">
-          Email address
+        <label for="email">
           <input
-            className="form-control me-2"
             type="email"
             name="email"
             placeholder="email address"
@@ -57,12 +54,8 @@ export default class LogIn extends Component {
           />
         </label>
 
-
-
-        <label for="password" className="form-label">
-          Password
+        <label for="password">
           <input
-            className="form-control me-2"
             type="password"
             name="password"
             placeholder="password"
@@ -72,12 +65,9 @@ export default class LogIn extends Component {
           />
         </label>
 
-        <input type="submit" value="Log In" type="button" className="btn btn-primary" />
+        <input type="submit" value="Log In"/>
 
-      
-
-
-      </div>
+      </form>
 
 
 
