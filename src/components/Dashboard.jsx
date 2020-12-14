@@ -11,6 +11,14 @@ export default class Dashboard extends React.Component {
     super(props);
   }
 
+  async componentDidMount() {
+    this.props.checkLogin().catch((error) => {
+      console.log("server error. can't log on");
+
+      console.log("not logged in");
+      console.log("login error", error);
+    });
+  }
 
 
   render () {

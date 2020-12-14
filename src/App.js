@@ -24,10 +24,16 @@ class App extends Component {
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.checkLogin = this.checkLogin.bind(this);
   }
 
   componentDidMount() {
-    this.checkLogin();
+    this.checkLogin().catch((error) => {
+      console.log("server error. can't log on");
+
+      console.log("not logged in");
+      console.log("login error", error);
+    });;
   }
 
   handleLogout() {
@@ -39,41 +45,24 @@ class App extends Component {
 
   handleLogin() {
     console.log("logging on");
-    this.setState({
-      loggedIn: true,
-      user: {}
-    })
+    this.checkLogin();
 
   }
 
-  checkLogin() {
+  async checkLogin() {
     console.log("checking login status");
+    const res = await
     axios.get("http://18.218.171.150:8080/examPro/examApi/user/info")
-    .then((response) => {
-      if (this.state.loggedIn==false && typeof(response.data)==='object') {
+
+      if (this.state.loggedIn==false && typeof(res.data)==='object') {
         console.log("currently log in on the server");
         console.log("loggin in client");
-        this.setState({
+        await this.setState({
           loggedIn: true,
-          user: response.data
+          user: res.data
         })
-      } else {
-        console.log("not logged in on the server");
-        console.log(response);
-        console.log("status object", typeof(response.data)==='object');
-        console.log("current login status", this.state.loggedIn==false);
-        this.setState({
-          loggedIn: null,
-          user: response.data
-        })
-      }
-    })
-    .catch((error) => {
-      console.log("server error. can't log on");
+      } 
 
-      console.log("not logged in");
-      console.log("login error", error);
-    });
   }
 
   render () {
@@ -98,7 +87,7 @@ class App extends Component {
                 </li>
               </ul>
               <span className="navbar-text">
-                {this.state.loggedIn && <Link to="/logout" className="btn btn-primary">Log Out</Link>}
+                {this.state.loggedIn && <a href="/logout" className="btn btn-primary">Log Out</a>}
               </span>
             </div>
           </nav>
