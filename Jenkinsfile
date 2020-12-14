@@ -5,7 +5,7 @@ pipeline {
       steps {
         sh '''npm i
 npm run build
-ls'''
+'''
       }
     }
 
