@@ -61,7 +61,7 @@ class App extends Component {
           loggedIn: true,
           user: res.data
         })
-      } 
+      }
 
   }
 
@@ -108,16 +108,6 @@ class App extends Component {
             <Route exact path="/logout" component={LogOut}></Route>
 
           </Switch>
-          <footer className="my-5 pt-5 text-muted text-center text-small navbar-dark bg-dark">
-        <p className="mb-1">© 2020 examPro</p>
-        <ul className="list-inline">
-          <li className="list-inline-item"><a href="#">Privacy</a></li>
-          <li className="list-inline-item"><a href="#">Terms</a></li>
-          <li className="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-      </footer>
-
-
         </div>
       </Router>
     );
