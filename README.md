@@ -1,5 +1,5 @@
-# Getting Started with Create React App
-
+# examPro App
+This application is intended for any Organization or teacher to test their candidates or students’ knowledge of a specific topic such as Java, Python, SQL, General knowledge, English etc. This application utilizes and Java REST API on the backend and React on the frontend.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
