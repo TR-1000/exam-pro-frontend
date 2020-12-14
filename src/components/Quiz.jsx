@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Quiz extends Component {
+export default class Quiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,13 +17,11 @@ class Quiz extends Component {
   }
 
 
-
-
-
   async componentDidMount() {
     console.log("getting questions from the api");
 
-    let res = await fetch('https://my-json-server.typicode.com/tr-1000/demo/questions');
+    let res = await fetch('http://18.218.171.150:8080/examPro/examApi/take/quiz');
+    console.log(res);
     let jsonData = await res.json()
 
     this.setState({
@@ -118,8 +116,11 @@ class Quiz extends Component {
     if(quizEnd) {
       console.log("quiz end");
       return (
-        <div>
-          {`Your score is ${(this.state.score / this.state.questions.length) * 100}% `}
+        <div class="jumbotron jumbotron-fluid">
+          <div class="container">
+            <h1 class="display-4">{`Your score is ${(this.state.score / this.state.questions.length) * 100}% `}</h1>
+
+          </div>
         </div>
       )
     }
@@ -127,11 +128,11 @@ class Quiz extends Component {
       <div className="container text-center">
         <h1>Core Java Exam</h1>
         <div className="card ">
-          <div class="card-header">
+          <div className="card-header">
             <span>{`Question ${currentIndex + 1}/${this.state.questions.length}`}</span>
           </div>
-          <div class="card-body">
-            <h2 class="card-title">{question}</h2><br/>
+          <div className="card-body">
+            <h2 className="card-title">{question}</h2><br/>
             <button className="btn btn-primary btn-lg btn-block" onClick={() => {
               this.checkAnswer(option_1)
             }} ><h3>{option_1}</h3></button> <br/><br/>
@@ -142,10 +143,10 @@ class Quiz extends Component {
               this.checkAnswer(option_3)
             }} ><h3>{option_3}</h3></button> <br/><br/>
           </div>
-          <div class="card-footer text-muted">
-            {currentIndex < this.state.questions.length-1 && <button type="button" class="btn btn-outline-primary btn-lg" onClick={this.handleNext} disabled={this.state.disabled}>Next</button>}
+          <div className="card-footer text-muted">
+            {currentIndex < this.state.questions.length-1 && <button type="button" className="btn btn-outline-primary btn-lg" onClick={this.handleNext} disabled={this.state.disabled}>Next</button>}
 
-            {currentIndex === this.state.questions.length-1 && <button type="button" class="btn btn-outline-primary btn-lg" onClick={this.handleFinish} disabled={this.state.disabled}>Submit</button>}
+            {currentIndex === this.state.questions.length-1 && <button type="button" className="btn btn-outline-primary btn-lg" onClick={this.handleFinish} disabled={this.state.disabled}>Submit</button>}
 
           </div>
         </div>
@@ -153,5 +154,3 @@ class Quiz extends Component {
     )
   }
 }
-
-export default Quiz;

@@ -8,7 +8,6 @@ export default class LogIn extends Component {
     this.state = {
       email: "",
       password: "",
-      loginErrors: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,11 +26,14 @@ export default class LogIn extends Component {
     e.preventDefault();
 
     axios.post(
-      `http://localhost:8080/examPro/examApi/login?email=${email}&password=${password}`,
-      { withCredentials: true }
+      `http://18.218.171.150:8080/examPro/examApi/login?email=${email}&password=${password}`, {withCredentials: true}
     )
     .then((response) => {
-      console.log(response);
+      console.log(response.data.startsWith("Welcome"));
+      if (response.data.startsWith("Welcome")) {
+        this.props.handleSuccessfulAuth();
+      }
+
     })
     .catch((error) => {
       console.log("login error", error);
@@ -43,7 +45,7 @@ export default class LogIn extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
 
-        <label for="email">
+        <label>
           <input
             type="email"
             name="email"
@@ -54,7 +56,7 @@ export default class LogIn extends Component {
           />
         </label>
 
-        <label for="password">
+        <label>
           <input
             type="password"
             name="password"
@@ -74,34 +76,3 @@ export default class LogIn extends Component {
     )
   }
 }
-
-// const LogIn = () => {
-//   const emailRef = useRef();
-//   const passwordRef = useRef();
-//
-//
-//   return (
-//     <Form>
-//
-//       <Form.Group controlId="formBasicEmail">
-//         <Form.Label>Email address</Form.Label>
-//         <Form.Control type="email" ref={emailRef} placeholder="Enter email" />
-//         <Form.Text className="text-muted">
-//           We'll never share your email with anyone else.
-//         </Form.Text>
-//       </Form.Group>
-//
-//       <Form.Group controlId="formBasicPassword">
-//         <Form.Label>Password</Form.Label>
-//         <Form.Control type="password" ref={passwordRef} placeholder="Password" />
-//       </Form.Group>
-//
-//       <Button variant="primary" type="submit">
-//         Log In
-//       </Button>
-//
-//     </Form>
-//   )
-// }
-//
-// export default LogIn;
