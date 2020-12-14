@@ -11,8 +11,13 @@ This application will help to generate multiple choice quiz and evaluate candida
 Users can:
 - Log in
 - View their info
-- Take a mock exam
+- Take a mock Java exam
 - Log out
+
+To log in for testing purposes:  
+  
+    email: test@email.com  
+    password: password
 
 ## [API](https://github.com/TR-1000/examProBdApp)
 This application utilizes a REST API built in Java and is hosted on an EC2 instance connected to a PostgreSQL RDS database.
@@ -31,4 +36,4 @@ This application utilizes a REST API built in Java and is hosted on an EC2 insta
 ## Deployment
 - Deployed to AWS S3
 - Java backend hosted on EC2
-- Jenkins CI/CD process for backend & frontend
+- Jenkins and Blue Ocean CI/CD process for backend & frontend
