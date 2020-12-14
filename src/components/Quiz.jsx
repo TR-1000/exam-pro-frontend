@@ -116,9 +116,9 @@ export default class Quiz extends Component {
     if(quizEnd) {
       console.log("quiz end");
       return (
-        <div class="jumbotron jumbotron-fluid">
+        <div class="jumbotron jumbotron-fluid container">
           <div class="container">
-            <h1 class="display-4">{`Your score is ${(this.state.score / this.state.questions.length) * 100}% `}</h1>
+            <h1 class="display-4 text-center">{`Your score is ${(this.state.score / this.state.questions.length) * 100}% `}</h1>
 
           </div>
         </div>
