@@ -1,4 +1,4 @@
-# examPro App
+# [examPro App](http://exam--pro.s3-website.us-east-2.amazonaws.com/)
 This application is intended for any Organization or teacher to test their candidates or students’ knowledge of a specific topic such as Java, Python, SQL, General knowledge, English etc. This application utilizes and Java REST API on the backend and React on the frontend.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -14,8 +14,14 @@ Users can:
 - Take a mock exam
 - Log out
 
-## API
-This application utilizes a REST API built in Java and is hosted on an EC2 instance with a PostgreSQL RDS database.
+## [API](https://github.com/TR-1000/examProBdApp)
+This application utilizes a REST API built in Java and is hosted on an EC2 instance connected to a PostgreSQL RDS database.
+
+##### Endpoints
+- POST: /login
+- GET: /user/info
+- GET: /take/quiz
+- GET: /logout
 
 ## Technologies
 - React
